@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h2>Select 7 Cars with a Total Value Less Than $100,000 by Sunday Night</h2>
+        <br>
+        <br>
+    </div>
+
+    <form>
+        <div class="sticky-top">
+            <div class="card mb-3 text-center">
+                <div class="card-body">
+                    <h4 class="card-title">Car Selections</h4>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th></th>
+                                <th>Number&nbsp&nbsp&nbsp&nbsp</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Selected</td>
+                                <td>0&nbsp&nbsp&nbsp&nbsp</td>
+                                <td>$0</td>
+                            </tr>
+                            <tr>
+                                <td>Remaining</td>
+                                <td>7&nbsp&nbsp&nbsp&nbsp</td>
+                                <td>$100,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <h4>9th Round Cars</h4>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Car</th>
+                    <th>Six Day Price</th>
+                    <th>Selections</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for car in info %}
+
+                <tr>
+                    <td><a href="{{ car[1] }}">{{ car[0] }}</a></td>
+                    <td>{{ car[2] | usd }}</td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input big-checkbox" type="checkbox" id="inlineCheckbox1" value="option1">
+                        </div>
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </form>
+
+{% endblock %}
