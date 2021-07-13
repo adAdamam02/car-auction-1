@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <h1>INDEX</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Car</th>
+                <th>Price</th>
+                <th>Time Remaining</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for car in info %}
+
+            <tr>
+                <td><a href="{{ car[1] }}">{{ car[0] }}</a></td>
+                <td>{{ car[2] | usd }}</td>
+                <td>{{ car[3] | time_format }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
